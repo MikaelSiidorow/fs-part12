@@ -1,0 +1,30 @@
+Script started on 2022-06-15 10:58:07+03:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="80" LINES="52"]
+[1m[7m%[27m[1m[0m                                                                                ]7;file:///u/88/siidorm1/unix/Documents/vscode/part12-containers-applications\[0m[27m[24m[J[44msiidorm1@t31300-lr274[49m [1m[32m~/Documents/vscode/part12-containers-applications
+[37m % [0m[37m[39m[49m[K[?1h=[?2004hddocker container ls[?1l>[?2004l
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+11f172415b6f   mongo     "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend_mongo_1
+5c36c647ee8b   redis     "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp     todo-backend_redis_1
+[1m[7m%[27m[1m[0m                                                                                ]7;file:///u/88/siidorm1/unix/Documents/vscode/part12-containers-applications\[0m[27m[24m[J[44msiidorm1@t31300-lr274[49m [1m[32m~/Documents/vscode/part12-containers-applications
+[37m % [0m[37m[39m[49m[K[?1h=[?2004hddocker exec -it todo_backend        -backend_redis_1 bash[?1l>[?2004l
+[?2004hroot@5c36c647ee8b:/data# [Kroot@5c36c647ee8b:/data# redis-cli KEYS *
+[?2004l1) "added_todos"
+[?2004hroot@5c36c647ee8b:/data# redis-cli GET "added_todos"
+[?2004l"12"
+[?2004hroot@5c36c647ee8b:/data# redis-cli SET "added_todos" 9001
+[?2004lOK
+[?2004hroot@5c36c647ee8b:/data# redis-cli GET "added_todos"
+[?2004l"9001"
+[?2004hroot@5c36c647ee8b:/data# redis-cli GET "added_todos"
+[?2004l"9002"
+[?2004hroot@5c36c647ee8b:/data# redis-cli GETDEL "added_todos"
+[?2004l"9002"
+[?2004hroot@5c36c647ee8b:/data# redis-cli GET "added_todos"
+[?2004l(nil)
+[?2004hroot@5c36c647ee8b:/data# redis-cli GET "added_todos"
+[?2004l"1"
+[?2004hroot@5c36c647ee8b:/data# exit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]7;file:///u/88/siidorm1/unix/Documents/vscode/part12-containers-applications\[0m[27m[24m[J[44msiidorm1@t31300-lr274[49m [1m[32m~/Documents/vscode/part12-containers-applications
+[37m % [0m[37m[39m[49m[K[?1h=[?2004heexit[?1l>[?2004l
+
+Script done on 2022-06-15 11:02:19+03:00 [COMMAND_EXIT_CODE="0"]
